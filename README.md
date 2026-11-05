@@ -8,7 +8,7 @@
 
 **Експериментальний MCP-сервер (лише читання) для пошуку метаданих судових рішень України.**
 Дані — відкритий набір «Єдиний державний реєстр судових рішень» (ЄДРСР), який публікує
-Державна судова адміністрація України на [data.gov.ua](https://data.gov.ua) (ліцензія набору — CC-BY).
+Державна судова адміністрація України на [data.gov.ua, набір «Єдиний державний реєстр судових рішень»](https://data.gov.ua/dataset/16ab7f06-7414-405f-8354-0a492475272d) (ліцензія набору — CC-BY).
 
 > ⚠️ Це **незалежний** проєкт. Він не є офіційним сервісом ДСА, ЄДРСР чи будь-якого державного органу
 > і не схвалений ними. Не є юридичною консультацією.
@@ -54,7 +54,7 @@ venv/bin/python tests/test_mcp_live.py data/sample.db               # живий
 Повну базу будують `court_db.py` (з CSV-архіву) та `update_daily.py` (щоденне поповнення без перезавантаження бази).
 
 ### Умови використання даних і подяка
-- Дані: **Державна судова адміністрація України**, набір «Єдиний державний реєстр судових рішень», [data.gov.ua](https://data.gov.ua), ліцензія **CC-BY** (потрібне зазначення авторства — дякуємо ДСА за відкриті дані).
+- Дані: **Державна судова адміністрація України**, набір «Єдиний державний реєстр судових рішень», [data.gov.ua, набір «Єдиний державний реєстр судових рішень»](https://data.gov.ua/dataset/16ab7f06-7414-405f-8354-0a492475272d), ліцензія **CC-BY** (потрібне зазначення авторства — дякуємо ДСА за відкриті дані).
 - Посилання `doc_url` ведуть на `od.reyestr.court.gov.ua`; ПЕРЕВІРИТИ окремі умови використання самих документів реєстру — цей проєкт їх не завантажує і не копіює.
 - Судові дані можуть стосуватися фізичних осіб; користувач сам відповідає за законність подальшого використання (зокрема щодо персональних даних). Це не юридичний висновок.
 - ПЕРЕВІРИТИ: статус полів `status`, `doc_url` (опис у `readme_2026.pdf` до набору не опрацьовано).
@@ -68,7 +68,7 @@ venv/bin/python tests/test_mcp_live.py data/sample.db               # живий
 
 **Experimental read-only MCP server for searching metadata of Ukrainian court decisions.**
 Data: the open dataset "Unified State Register of Court Decisions" (EDRSR) published by the
-State Judicial Administration of Ukraine on [data.gov.ua](https://data.gov.ua) (dataset licence: CC-BY).
+State Judicial Administration of Ukraine on [data.gov.ua, dataset "Unified State Register of Court Decisions"](https://data.gov.ua/dataset/16ab7f06-7414-405f-8354-0a492475272d) (dataset licence: CC-BY).
 
 > ⚠️ This is an **independent** project, not an official service of, nor endorsed by, the State Judicial Administration or any government body. Not legal advice.
 
@@ -93,7 +93,7 @@ venv/bin/python tests/test_mcp_live.py data/sample.db
 ```
 
 ### Data terms and credit
-- Data: **State Judicial Administration of Ukraine**, "Unified State Register of Court Decisions", [data.gov.ua](https://data.gov.ua), licence **CC-BY** — attribution required; we thank the SJA for publishing open data.
+- Data: **State Judicial Administration of Ukraine**, "Unified State Register of Court Decisions", [data.gov.ua, dataset "Unified State Register of Court Decisions"](https://data.gov.ua/dataset/16ab7f06-7414-405f-8354-0a492475272d), licence **CC-BY** — attribution required; we thank the SJA for publishing open data.
 - `doc_url` links point to `od.reyestr.court.gov.ua`; TO VERIFY the separate terms of the register's documents — this project does not download or copy them.
 - Court data may concern individuals; users are responsible for lawful downstream use (incl. personal-data rules). This is not a legal opinion.
 
@@ -103,3 +103,9 @@ TO VERIFY: no licence chosen yet — see `LICENSE`.
 ### Limits / Межі
 Argument ≤ 200 chars, FTS ≤ 8 words, response ≤ 256 KB (flag `response_truncated`), ≤ 4 concurrent DB queries (otherwise `[busy]`), 5 s / 8 s SQLite deadlines; strict `doc_id` (ASCII digits, 64-bit), real calendar dates `YYYY-MM-DD` (years 1990–2100), NUL/control characters rejected; errors look like `[code] message`.
 Аргумент ≤ 200 символів, запит ≤ 8 слів, відповідь ≤ 256 КБ, не більше 4 одночасних запитів до бази; повний опис — у README основного проєкту (copy of fields table: `court_tools.py` constants).
+
+## Примітка щодо даних / Data notice
+
+Дані мають довідковий характер і не є офіційною копією судових рішень. Офіційні тексти доступні на https://reyestr.court.gov.ua. Джерело: Державна судова адміністрація України, відкриті дані, ліцензія CC-BY, обов'язкове посилання на джерело: https://data.gov.ua/dataset/16ab7f06-7414-405f-8354-0a492475272d
+
+The data is informational only and is not an official copy of court decisions. Official texts are available at https://reyestr.court.gov.ua. Source: State Judicial Administration of Ukraine, open data, licence CC-BY, attribution required: https://data.gov.ua/dataset/16ab7f06-7414-405f-8354-0a492475272d
