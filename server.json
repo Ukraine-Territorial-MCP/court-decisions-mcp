@@ -1,0 +1,13 @@
+{
+  "$schema": "https://static.modelcontextprotocol.io/schemas/2025-12-11/server.schema.json",
+  "name": "io.github.Ukraine-Territorial-MCP/court-decisions",
+  "title": "Court Decisions Ukraine MCP",
+  "description": "Experimental read-only MCP over metadata of Ukrainian court decisions (DSA/EDRSR open data).",
+  "version": "0.1.0",
+  "remotes": [
+    {
+      "type": "streamable-http",
+      "url": "https://mcp.edeputat.com/court-decisions/mcp"
+    }
+  ]
+}

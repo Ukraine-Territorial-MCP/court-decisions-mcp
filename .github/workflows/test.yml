@@ -1,0 +1,33 @@
+name: Test
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Install MCP SDK
+        run: python3 -m pip install -r requirements.txt
+      - name: Unit tests (synthetic data + data/sample.db)
+        run: |
+          python3 -I tests/test_core.py
+          python3 -I tests/test_new_tools.py
+      - name: Live MCP test on data/sample.db
+        run: python3 tests/test_mcp_live.py data/sample.db
+      - name: Validate server.json
+        run: |
+          curl -fLsS --retry 3 -o /tmp/mcp-publisher.tar.gz \
+            https://github.com/modelcontextprotocol/registry/releases/latest/download/mcp-publisher_linux_amd64.tar.gz
+          tar -xzf /tmp/mcp-publisher.tar.gz mcp-publisher
+          ./mcp-publisher validate server.json

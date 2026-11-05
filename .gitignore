@@ -1,0 +1,28 @@
+# бази даних і архіви
+*.db
+*.db-shm
+*.db-wal
+*.db-journal
+*.sqlite
+*.sqlite3
+*.zip
+*.tar
+*.tar.gz
+*.rtf
+!data/sample.db
+# оточення
+venv/
+venv-*/
+.venv/
+__pycache__/
+*.pyc
+# секрети
+.env
+.env.*
+*.pem
+*.key
+# тимчасове
+data/tmp/
+data/raw/
+data/ex*/
+upd_*/
